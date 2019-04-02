@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Reddit.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -93,6 +96,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Reddit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\add.jpg" />
+    <Resource Include="Media\clock.png" />
+    <Resource Include="Media\edit.jpg" />
+    <Resource Include="Media\remove.jpg" />
+    <Resource Include="Media\scheduler.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

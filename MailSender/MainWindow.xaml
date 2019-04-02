@@ -5,18 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <DockPanel>
-        <Menu Height="25" VerticalAlignment="Top" DockPanel.Dock="Top">
-            
+        Title="MainWindow" Height="400" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Файл"></MenuItem>
         </Menu>
-        <TabControl DockPanel.Dock="Top">
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+        <StatusBar Grid.Row="2">
+            <TextBlock>Готов</TextBlock>
+        </StatusBar>
+        <ResizeGrip Grid.Row="2" HorizontalAlignment="Right"/>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Формирование групп рассылки">
+                <DockPanel LastChildFill="False">
+                    <ToolBarTray DockPanel.Dock="Top">
+                        <ToolBar>
+                            <TextBlock Text="Отправители" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <ComboBox Width="150" SelectedIndex="1">
+                                <ComboBoxItem Content="Отправитель 1"/>
+                                <ComboBoxItem Content="Отправитель 2"/>
+                                <ComboBoxItem Content="Отправитель 3"/>
+                            </ComboBox>
+                            <Button>
+                                <Image Source="Media/add.jpg" Height="16"/>
+                            </Button>
+                            <Button>
+                                <Image Source="Media/edit.jpg" Height="16"/>
+                            </Button>
+                            <Button>
+                                <Image Source="Media/remove.jpg" Height="16"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar Band="1">
+                            <TextBlock Text="Сервера" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <ComboBox Width="150" SelectedIndex="1">
+                                <ComboBoxItem Content="Отправитель 1"/>
+                                <ComboBoxItem Content="Отправитель 2"/>
+                                <ComboBoxItem Content="Отправитель 3"/>
+                            </ComboBox>
+                            <Button>Добавить</Button>
+                            <Button>Редактировать</Button>
+                            <Button>Удалить</Button>
+                        </ToolBar>
+                        <ToolBar>
+                            <TextBlock Text="Перейти в планировщик" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <Button>Перейти</Button>
+                        </ToolBar>
+                        <ToolBar Band="1">
+                            <TextBlock Text="Список адресатов" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <Button>Добавить</Button>
+                            <Button>Редактировать</Button>
+                            <Button>Удалить</Button>
+                        </ToolBar>
+                    </ToolBarTray>
+                </DockPanel>
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
+            <TabItem Header="Планировщик"></TabItem>
+            <TabItem Header="Редактор писем"></TabItem>
+            <TabItem Header="Статистика" IsEnabled="False"></TabItem>
         </TabControl>
-    </DockPanel>
+    </Grid>
 </Window>
