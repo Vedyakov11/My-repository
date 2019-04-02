@@ -23,6 +23,11 @@
             <TabItem Header="Формирование групп рассылки">
                 <DockPanel LastChildFill="False">
                     <ToolBarTray DockPanel.Dock="Top">
+                        <ToolBarTray.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Height" Value="16"/>
+                            </Style>
+                        </ToolBarTray.Resources>
                         <ToolBar>
                             <TextBlock Text="Отправители" Margin="0,0,10,0" VerticalAlignment="Center"/>
                             <ComboBox Width="150" SelectedIndex="1">
@@ -30,14 +35,14 @@
                                 <ComboBoxItem Content="Отправитель 2"/>
                                 <ComboBoxItem Content="Отправитель 3"/>
                             </ComboBox>
-                            <Button>
-                                <Image Source="Media/add.jpg" Height="16"/>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Media/add.jpg"/>
                             </Button>
-                            <Button>
-                                <Image Source="Media/edit.jpg" Height="16"/>
+                            <Button ToolTip="Редактировать">
+                                <Image Source="Media/edit.jpg"/>
                             </Button>
-                            <Button>
-                                <Image Source="Media/remove.jpg" Height="16"/>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Media/remove.jpg"/>
                             </Button>
                         </ToolBar>
                         <ToolBar Band="1">
@@ -47,19 +52,33 @@
                                 <ComboBoxItem Content="Отправитель 2"/>
                                 <ComboBoxItem Content="Отправитель 3"/>
                             </ComboBox>
-                            <Button>Добавить</Button>
-                            <Button>Редактировать</Button>
-                            <Button>Удалить</Button>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Media/add.jpg"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <Image Source="Media/edit.jpg"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Media/remove.jpg"/>
+                            </Button>
                         </ToolBar>
                         <ToolBar>
                             <TextBlock Text="Перейти в планировщик" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                            <Button>Перейти</Button>
+                            <Button>
+                                <Image Source="Media/scheduler.jpg"/>
+                            </Button>
                         </ToolBar>
                         <ToolBar Band="1">
                             <TextBlock Text="Список адресатов" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                            <Button>Добавить</Button>
-                            <Button>Редактировать</Button>
-                            <Button>Удалить</Button>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Media/add.jpg"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <Image Source="Media/edit.jpg"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Media/remove.jpg"/>
+                            </Button>
                         </ToolBar>
                     </ToolBarTray>
                 </DockPanel>
