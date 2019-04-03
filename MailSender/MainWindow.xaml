@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
+        xmlns:data="clr-namespace:MailSender.Data"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800">
     <Grid>
@@ -30,11 +31,8 @@
                         </ToolBarTray.Resources>
                         <ToolBar>
                             <TextBlock Text="Отправители" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                            <ComboBox Width="150" SelectedIndex="1">
-                                <ComboBoxItem Content="Отправитель 1"/>
-                                <ComboBoxItem Content="Отправитель 2"/>
-                                <ComboBoxItem Content="Отправитель 3"/>
-                            </ComboBox>
+                            <ComboBox Width="150" SelectedIndex="1" DisplayMemberPath="Name"
+                                      ItemsSource="{x:Static data:TestData.Senders}"/>
                             <Button ToolTip="Добавить">
                                 <Image Source="Media/add.jpg"/>
                             </Button>
@@ -47,11 +45,16 @@
                         </ToolBar>
                         <ToolBar Band="1">
                             <TextBlock Text="Сервера" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                            <ComboBox Width="150" SelectedIndex="1">
-                                <ComboBoxItem Content="Отправитель 1"/>
-                                <ComboBoxItem Content="Отправитель 2"/>
-                                <ComboBoxItem Content="Отправитель 3"/>
-                            </ComboBox>
+                            <ComboBox Width="150" SelectedIndex="1" ItemsSource="{x:Static data:TestData.Servers}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type entityes:Server}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding Address}" Margin="4,0,0,0" Opacity="0.6"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox> 
                             <Button ToolTip="Добавить">
                                 <Image Source="Media/add.jpg"/>
                             </Button>

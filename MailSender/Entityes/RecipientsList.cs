@@ -1,4 +1,9 @@
 ﻿using System.Collections.Generic;
+using MailSender.Entityes;
+using System;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MailSender.Entityes
 {
