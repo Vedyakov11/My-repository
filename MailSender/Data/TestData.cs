@@ -20,7 +20,7 @@ namespace MailSender.Data
         {
             new Sender { Name = "Иванов", EmailAddress = "ivanov@yandex.ru"},
             new Sender { Name = "Петров", EmailAddress = "petrov@yandex.ru"},
-            new Sender { Name = "Сидоров", EmailAddress = "Sidorov@yandex.ru"}
+            new Sender { Name = "Сидоров", EmailAddress = "Sidorov@yandex.ru"},
         };
     }
 }

@@ -46,14 +46,14 @@
                         <ToolBar Band="1">
                             <TextBlock Text="Сервера" Margin="0,0,10,0" VerticalAlignment="Center"/>
                             <ComboBox Width="150" SelectedIndex="1" ItemsSource="{x:Static data:TestData.Servers}">
-                                <ComboBox.ItemTemplate>
+                                <!--<ComboBox.ItemTemplate>
                                     <DataTemplate DataType="{x:Type entityes:Server}">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}"/>
                                             <TextBlock Text="{Binding Address}" Margin="4,0,0,0" Opacity="0.6"/>
                                         </StackPanel>
                                     </DataTemplate>
-                                </ComboBox.ItemTemplate>
+                                </ComboBox.ItemTemplate>-->
                             </ComboBox> 
                             <Button ToolTip="Добавить">
                                 <Image Source="Media/add.jpg"/>
