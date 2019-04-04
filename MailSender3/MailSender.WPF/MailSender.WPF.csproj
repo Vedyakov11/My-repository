@@ -100,5 +100,12 @@
       <Name>MailSender.Lib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\add.jpg" />
+    <Resource Include="Media\clock.png" />
+    <Resource Include="Media\edit.jpg" />
+    <Resource Include="Media\remove.jpg" />
+    <Resource Include="Media\scheduler.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

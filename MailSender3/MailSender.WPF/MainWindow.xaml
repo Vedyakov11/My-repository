@@ -5,8 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="974.85">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Файл"></MenuItem>
+        </Menu>
+        <StatusBar Grid.Row="2">
+            <TextBlock>Готов</TextBlock>
+        </StatusBar>
+        <ResizeGrip Grid.Row="2" HorizontalAlignment="Right"/>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Формирование групп рассылки">
+                <DockPanel LastChildFill="False">
+                    <ToolBarTray DockPanel.Dock="Top">
+                        <ToolBarTray.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Height" Value="16"/>
+                            </Style>
+                        </ToolBarTray.Resources>
+                        <ToolBar>
+                            <TextBlock Text="Отправители" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <ComboBox Width="150" SelectedIndex="1">
+                                <ComboBoxItem Content="Отправитель 1"/>
+                                <ComboBoxItem Content="Отправитель 2"/>
+                                <ComboBoxItem Content="Отправитель 3"/>
+                            </ComboBox>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Media/add.jpg"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <Image Source="Media/edit.jpg"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Media/remove.jpg"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar Band="1">
+                            <TextBlock Text="Сервера" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <ComboBox Width="150" SelectedIndex="1">
+                                <ComboBoxItem Content="Отправитель 1"/>
+                                <ComboBoxItem Content="Отправитель 2"/>
+                                <ComboBoxItem Content="Отправитель 3"/>
+                            </ComboBox>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Media/add.jpg"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <Image Source="Media/edit.jpg"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Media/remove.jpg"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar>
+                            <TextBlock Text="Перейти в планировщик" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <Button>
+                                <Image Source="Media/scheduler.jpg"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar Band="1">
+                            <TextBlock Text="Список адресатов" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Media/add.jpg"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <Image Source="Media/edit.jpg"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Media/remove.jpg"/>
+                            </Button>
+                        </ToolBar>
+                    </ToolBarTray>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Планировщик"></TabItem>
+            <TabItem Header="Редактор писем"></TabItem>
+            <TabItem Header="Статистика" IsEnabled="False"></TabItem>
+        </TabControl>
     </Grid>
 </Window>
