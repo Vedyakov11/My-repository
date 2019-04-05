@@ -3,8 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:MailSender.WPF"
         xmlns:data="clr-namespace:MailSender.WPF.Data"
+        xmlns:entityes="clr-namespace:MailSender.Lib.Entityes;assembly=MailSender.Lib"
+        xmlns:linq2sql="clr-namespace:MailSender.Lib.Data.linq2sql;assembly=MailSender.Lib"   
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -35,27 +38,31 @@
                                       ItemsSource="{x:Static data:TestData.Senders}">
                             </ComboBox>
                             <Button ToolTip="Добавить">
-                                <Image Source="Media/add.jpg"/>
+                                <fa:ImageAwesome Icon="Plus" Height="16" Foreground="Green"/>
                             </Button>
                             <Button ToolTip="Редактировать">
-                                <Image Source="Media/edit.jpg"/>
+                                <fa:ImageAwesome Icon="Edit" Height="16" Foreground="DarkBlue"/>
                             </Button>
                             <Button ToolTip="Удалить">
-                                <Image Source="Media/remove.jpg"/>
+                                <fa:ImageAwesome Icon="Remove" Height="16" Foreground="Red">
+                                    <fa:ImageAwesome.Effect>
+                                        <DropShadowEffect ShadowDepth="1"/>
+                                    </fa:ImageAwesome.Effect>
+                                </fa:ImageAwesome>
                             </Button>
                         </ToolBar>
                         <ToolBar Band="1">
                             <TextBlock Text="Сервера" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                            <ComboBox Width="150" SelectedIndex="1" DisplayMemberPath="Address" 
+                            <ComboBox Width="150" SelectedIndex="1"  
                                       ItemsSource="{x:Static data:TestData.Servers}">
-                                <!--<ComboBox.ItemTemplate>
+                                <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="{x:Type entityes:Server}">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}"/>
                                             <TextBlock Text="{Binding Address}" Margin="4,0,0,0" Opacity="0.6"/>
                                         </StackPanel>
                                     </DataTemplate>
-                                </ComboBox.ItemTemplate>-->
+                                </ComboBox.ItemTemplate>
                             </ComboBox>
                             <Button ToolTip="Добавить">
                                 <Image Source="Media/add.jpg"/>
@@ -86,6 +93,21 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
+                    <Grid>
+                        <Grid.Resources>
+                            <linq2sql:MailSenderDBDataContext x:Key="DataContext"/>
+                        </Grid.Resources>
+                        <DataGrid ItemsSource="{Binding Recipients, Source={StaticResource DataContext}}"
+                                  AutoGenerateColumns="False" IsReadOnly="True"
+                                  HorizontalGridLinesBrush="{x:Null}"
+                                  AlternatingRowBackground="#7F87CEFA" Grid.RowSpan="3">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="#" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
+                                <DataGridTextColumn Header="Адрес" Binding="{Binding Email}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </DockPanel>
             </TabItem>
             <TabItem Header="Планировщик">
