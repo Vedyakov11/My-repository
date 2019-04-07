@@ -47,9 +47,8 @@
                                 <fa:ImageAwesome Icon="Remove" Height="16" Foreground="Red">
                                     <fa:ImageAwesome.Effect>
                                         <DropShadowEffect ShadowDepth="1"/>
-                                    </fa:ImageAwesome.Effect>                                        
+                                    </fa:ImageAwesome.Effect>
                                 </fa:ImageAwesome>
-
                             </Button>
                         </ToolBar>
                         <ToolBar Band="1">
