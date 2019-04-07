@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:entityes="clr-namespace:MailSender.Entityes"
+        xmlns:linq2sql="clr-namespace:MailSender.Data2.linq2sql"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800">
     <Grid>
@@ -23,7 +24,7 @@
         <ResizeGrip Grid.Row="2" HorizontalAlignment="Right"/>
         <TabControl Grid.Row="1">
             <TabItem Header="Формирование групп рассылки">
-                <DockPanel LastChildFill="False">
+                <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
                         <ToolBarTray.Resources>
                             <Style TargetType="{x:Type Image}">
@@ -87,6 +88,21 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
+                    <Grid>
+                        <Grid.Resources>
+                            <linq2sql:MailSenderDBDataContext x:Key="DataContext"/>
+                        </Grid.Resources>
+                        <DataGrid ItemsSource="{Binding Recipients, Source={StaticResource DataContext}}"
+                                  AutoGenerateColumns="False" IsReadOnly="True"
+                                  HorizontalGridLinesBrush="{x:Null}"
+                                  AlternatingRowBackground="#7F87CEFA">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="#" Binding="{Binding Id}"/>
+                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
+                                <DataGridTextColumn Header="Адрес" Binding="{Binding Email}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </DockPanel>
             </TabItem>
             <TabItem Header="Планировщик">
