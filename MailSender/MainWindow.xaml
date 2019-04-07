@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:entityes="clr-namespace:MailSender.Entityes"
@@ -37,13 +38,18 @@
                                       DisplayMemberPath="Name"
                                       ItemsSource="{x:Static data:TestData.Senders}"/>
                             <Button ToolTip="Добавить">
-                                <Image Source="Media/add.jpg"/>
+                                <fa:ImageAwesome Icon="Plus" Height="16" Foreground="Green"/>
                             </Button>
                             <Button ToolTip="Редактировать">
-                                <Image Source="Media/edit.jpg"/>
+                                <fa:ImageAwesome Icon="Edit" Height="16" Foreground="DarkBlue"/>
                             </Button>
                             <Button ToolTip="Удалить">
-                                <Image Source="Media/remove.jpg"/>
+                                <fa:ImageAwesome Icon="Remove" Height="16" Foreground="Red">
+                                    <fa:ImageAwesome.Effect>
+                                        <DropShadowEffect ShadowDepth="1"/>
+                                    </fa:ImageAwesome.Effect>                                        
+                                </fa:ImageAwesome>
+
                             </Button>
                         </ToolBar>
                         <ToolBar Band="1">
