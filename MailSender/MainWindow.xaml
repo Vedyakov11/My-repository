@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailSender"
+        xmlns:data="clr-namespace:MailSender.Data"
+        xmlns:entityes="clr-namespace:MailSender.Entityes"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="800">
     <Grid>
@@ -23,43 +25,66 @@
             <TabItem Header="Формирование групп рассылки">
                 <DockPanel LastChildFill="False">
                     <ToolBarTray DockPanel.Dock="Top">
+                        <ToolBarTray.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Height" Value="16"/>
+                            </Style>
+                        </ToolBarTray.Resources>
                         <ToolBar>
                             <TextBlock Text="Отправители" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                            <ComboBox Width="150" SelectedIndex="1">
-                                <ComboBoxItem Content="Отправитель 1"/>
-                                <ComboBoxItem Content="Отправитель 2"/>
-                                <ComboBoxItem Content="Отправитель 3"/>
-                            </ComboBox>
-                            <Button>
-                                <Image Source="Media/add.jpg" Height="16"/>
+                            <ComboBox Width="150" SelectedIndex="1"
+                                      DisplayMemberPath="Name"
+                                      ItemsSource="{x:Static data:TestData.Senders}"/>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Media/add.jpg"/>
                             </Button>
-                            <Button>
-                                <Image Source="Media/edit.jpg" Height="16"/>
+                            <Button ToolTip="Редактировать">
+                                <Image Source="Media/edit.jpg"/>
                             </Button>
-                            <Button>
-                                <Image Source="Media/remove.jpg" Height="16"/>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Media/remove.jpg"/>
                             </Button>
                         </ToolBar>
                         <ToolBar Band="1">
                             <TextBlock Text="Сервера" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                            <ComboBox Width="150" SelectedIndex="1">
-                                <ComboBoxItem Content="Отправитель 1"/>
-                                <ComboBoxItem Content="Отправитель 2"/>
-                                <ComboBoxItem Content="Отправитель 3"/>
+                            <ComboBox Width="150" SelectedIndex="1"
+                                      ItemsSource="{x:Static data:TestData.Servers}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type entityes:Server}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding Address}" Margin="4,0,0,0" Opacity="0.6"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
                             </ComboBox>
-                            <Button>Добавить</Button>
-                            <Button>Редактировать</Button>
-                            <Button>Удалить</Button>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Media/add.jpg"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <Image Source="Media/edit.jpg"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Media/remove.jpg"/>
+                            </Button>
                         </ToolBar>
                         <ToolBar>
                             <TextBlock Text="Перейти в планировщик" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                            <Button>Перейти</Button>
+                            <Button>
+                                <Image Source="Media/Scheduler.jpg"/>
+                            </Button>
                         </ToolBar>
                         <ToolBar Band="1">
                             <TextBlock Text="Список адресатов" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                            <Button>Добавить</Button>
-                            <Button>Редактировать</Button>
-                            <Button>Удалить</Button>
+                            <Button ToolTip="Добавить">
+                                <Image Source="Media/add.jpg"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <Image Source="Media/edit.jpg"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <Image Source="Media/remove.jpg"/>
+                            </Button>
                         </ToolBar>
                     </ToolBarTray>
                 </DockPanel>

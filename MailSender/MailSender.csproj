@@ -35,7 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Reddit.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -66,6 +67,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data\TestData.cs" />
+    <Compile Include="Entityes\Base\Human.cs" />
+    <Compile Include="Entityes\Email.cs" />
+    <Compile Include="Entityes\EmailList.cs" />
+    <Compile Include="Entityes\Recipient.cs" />
+    <Compile Include="Entityes\RecipientsList.cs" />
+    <Compile Include="Entityes\SchedulerTask.cs" />
+    <Compile Include="Entityes\Sender.cs" />
+    <Compile Include="Entityes\Server.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -98,14 +108,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Reddit.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Media\add.jpg" />
     <Resource Include="Media\clock.png" />
     <Resource Include="Media\edit.jpg" />
     <Resource Include="Media\remove.jpg" />
     <Resource Include="Media\scheduler.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
