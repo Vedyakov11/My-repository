@@ -93,6 +93,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\ListControl.xaml.cs">
+      <DependentUpon>ListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Servises\Interfaces\IRecipientsData.cs" />
     <Compile Include="Servises\RecipientsDataLinq2Sql.cs" />
     <Compile Include="Servise\Encryptor.cs" />
@@ -105,6 +108,10 @@
     <Compile Include="Views\RecipientsView.xaml.cs">
       <DependentUpon>RecipientsView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Components\ListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
