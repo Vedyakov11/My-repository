@@ -1,15 +1,15 @@
 ﻿<Window x:Class="MailSender.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:entityes="clr-namespace:MailSender.Entityes"
         xmlns:linq2sql="clr-namespace:MailSender.Data2.linq2sql"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="800">
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
+        Title="{Binding Title}" Height="400" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,7 +20,7 @@
             <MenuItem Header="Файл"></MenuItem>
         </Menu>
         <StatusBar Grid.Row="2">
-            <TextBlock>Готов</TextBlock>
+            <TextBlock Text="{Binding Status}"/>
         </StatusBar>
         <ResizeGrip Grid.Row="2" HorizontalAlignment="Right"/>
         <TabControl Grid.Row="1">
@@ -93,20 +93,18 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
-                    <Grid>
-                        <Grid.Resources>
-                            <linq2sql:MailSenderDBDataContext x:Key="DataContext"/>
-                        </Grid.Resources>
-                        <DataGrid ItemsSource="{Binding Recipients, Source={StaticResource DataContext}}"
-                                  AutoGenerateColumns="False" IsReadOnly="True"
-                                  HorizontalGridLinesBrush="{x:Null}"
-                                  AlternatingRowBackground="#7F87CEFA">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="#" Binding="{Binding Id}"/>
-                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
-                                <DataGridTextColumn Header="Адрес" Binding="{Binding Email}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                    <Grid xmlns:view="clr-namespace:MailSender.Views">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <view:RecipientsView Grid.Column="0"/>
+                        <view:RecipientEditor Grid.Column="1" Margin="10"/>
+                        <GridSplitter Grid.Column="1" 
+                                      VerticalAlignment="Stretch" 
+                                      HorizontalAlignment="Left"
+                                      Width="3" Foreground="Transparent"/>
+                                      
                     </Grid>
                 </DockPanel>
             </TabItem>
