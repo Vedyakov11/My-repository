@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MailSender.Components
 {
@@ -90,6 +91,49 @@ namespace MailSender.Components
         }
 
         #endregion
+
+        #region MyRegion
+
+        public static readonly DependencyProperty CreateCommandProperty = 
+            DependencyProperty.Register(
+            nameof (CreateCommand), 
+            typeof(ICommand), 
+            typeof(ListControl), 
+            new PropertyMetadata(default(ICommand)));
+
+        public ICommand CreateCommand
+        {
+            get => (ICommand) GetValue(CreateCommandProperty); 
+            set => SetValue(CreateCommandProperty, value);
+        }
+
+        #endregion
+
+        public static readonly DependencyProperty EditCommandProperty = 
+            DependencyProperty.Register(
+            nameof(EditCommand), 
+            typeof(ICommand), 
+            typeof(ListControl), 
+            new PropertyMetadata(default(ICommand)));
+
+        public ICommand EditCommand
+        {
+            get => (ICommand) GetValue(EditCommandProperty);
+            set =>SetValue(EditCommandProperty, value);
+        }
+
+        public static readonly DependencyProperty DeletCommandProperty = 
+            DependencyProperty.Register(
+            "DeletCommand", 
+            typeof(ICommand), 
+            typeof(ListControl), 
+            new PropertyMetadata(default(ICommand)));
+
+        public ICommand DeletCommand
+        {
+            get => (ICommand) GetValue(DeletCommandProperty);
+            set => SetValue(DeletCommandProperty, value); 
+        }
 
         public ListControl() => InitializeComponent();
     }

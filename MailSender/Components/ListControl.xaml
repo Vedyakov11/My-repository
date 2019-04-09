@@ -16,13 +16,13 @@
                     <Setter Property="Padding" Value="1"/>
                 </Style>
             </UniformGrid.Resources>
-            <Button ToolTip="Добавить">
+            <Button ToolTip="Добавить" Command="{Binding CreateCommand}">
                 <fa:ImageAwesome Icon="Plus" Height="16" Foreground="Green"/>
             </Button>
-            <Button ToolTip="Редактировать">
+            <Button ToolTip="Редактировать" Command="{Binding EditCommand}" CommandParameter="{Binding SelectedElement}">
                 <fa:ImageAwesome Icon="Edit" Height="16" Foreground="DarkBlue"/>
             </Button>
-            <Button ToolTip="Удалить">
+            <Button ToolTip="Удалить" Command="{Binding DeletCommand}" CommandParameter="{Binding SelectedElement}">
                 <fa:ImageAwesome Icon="Remove" Height="16" Foreground="Red">
                     <fa:ImageAwesome.Effect>
                         <DropShadowEffect ShadowDepth="1"/>

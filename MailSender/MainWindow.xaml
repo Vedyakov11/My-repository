@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
-        xmlns:local="clr-namespace:MailSender"
+        xmlns:l="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:entityes="clr-namespace:MailSender.Entityes"
         xmlns:linq2sql="clr-namespace:MailSender.Data2.linq2sql"
+        xmlns:c="clr-namespace:MailSender.Components"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="400" Width="800">
     <Grid>
@@ -33,7 +34,7 @@
                             </Style>
                         </ToolBarTray.Resources>
                         <ToolBar>
-                            <TextBlock Text="Отправители" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <!--<TextBlock Text="Отправители" Margin="0,0,10,0" VerticalAlignment="Center"/>
                             <ComboBox Width="150" SelectedIndex="1"
                                       DisplayMemberPath="Name"
                                       ItemsSource="{x:Static data:TestData.Senders}"/>
@@ -49,10 +50,13 @@
                                         <DropShadowEffect ShadowDepth="1"/>
                                     </fa:ImageAwesome.Effect>
                                 </fa:ImageAwesome>
-                            </Button>
+                            </Button>-->
+                            <c:ListControl PanelName="Отправители"
+                                           Items="{x:Static data:TestData.Senders}"
+                                           DisplayMemberPath="Name"/>       
                         </ToolBar>
                         <ToolBar Band="1">
-                            <TextBlock Text="Сервера" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            <!--<TextBlock Text="Сервера" Margin="0,0,10,0" VerticalAlignment="Center"/>
                             <ComboBox Width="150" SelectedIndex="1"
                                       ItemsSource="{x:Static data:TestData.Servers}">
                                 <ComboBox.ItemTemplate>
@@ -69,10 +73,20 @@
                             </Button>
                             <Button ToolTip="Редактировать">
                                 <Image Source="Media/edit.jpg"/>
-                            </Button>
+                            </Button> 
                             <Button ToolTip="Удалить">
                                 <Image Source="Media/remove.jpg"/>
-                            </Button>
+                            </Button>-->
+                            <c:ListControl PanelName="Сервера" Items="{x:Static data:TestData.Servers}">
+                                <c:ListControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type entityes:Server}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding Address}" Margin="4,0,0,0" Opacity="0.6"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </c:ListControl.ItemTemplate>
+                            </c:ListControl>
                         </ToolBar>
                         <ToolBar>
                             <TextBlock Text="Перейти в планировщик" Margin="0,0,10,0" VerticalAlignment="Center"/>
